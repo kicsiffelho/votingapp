@@ -20,6 +20,9 @@ public class PollController {
 
     @PostMapping
     public Poll createPoll(@RequestBody Poll poll) {
+        if (poll.getId() != null && poll.getId() == 0L) {
+            poll.setId(null);
+        }
         return pollService.createPoll(poll);
     }
 
